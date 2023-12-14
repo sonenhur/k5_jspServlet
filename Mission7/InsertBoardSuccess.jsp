@@ -6,6 +6,7 @@
     <title>게시물 등록 성공</title>
 </head>
 <body>
+    <!-- 게시물 등록 성공 페이지 -->
     <h2>게시물 등록 성공</h2>
     <p>
         <a href="InsertBoardForm.jsp">게시물 등록 폼으로 돌아가기</a>
