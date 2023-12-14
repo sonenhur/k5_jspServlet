@@ -14,7 +14,7 @@
 ### **InsertProcess.jsp**
  - 회원 정보를 데이터베이스에 삽입하는 페이지.  
  - 데이터베이스 연결을 위해 common.JDBConnect 클래스 사용.  
- - 사용자로부터 전달받은 아이디, 패스워드, 이름으로 SQL 쿼리를 실행해 회원 정보를 데이터베이스에 삽입.  
+ - 사용자로부터 전달받은 아이디, 패스워드, 이름으로 SQL 쿼리를 실행해 데이터베이스에 삽입.  
  - 성공 시 InsertSuccess.jsp로, 실패 시 InsertFail.jsp로 리다이렉트.
    
 ### **InsertSuccess.jsp**
