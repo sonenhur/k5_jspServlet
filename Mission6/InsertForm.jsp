@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Insert Form</title>
+    <title>회원 등록 폼</title>
 </head>
 <body>
+
+    <!-- 회원 등록 폼 페이지 -->
     <h2>회원 등록</h2>
     <span style="color: red; font-size: 1.2em;">
         <%=request.getAttribute("InsertErrMsg") == null ? "" : request.getAttribute("LoginErrMsg") %>
@@ -15,6 +17,8 @@
     <%
     if (session.getAttribute("UserId") == null) {
     %>
+    
+    <!-- 클라이언트 측에서 유효성을 검사하는 JavaScript 함수 -->
     <script>
         function validateForm(form) {
             if (!form.user_id.value) {
@@ -32,7 +36,7 @@
         }
     </script>
 
-    <!-- submit 누르면 action 항목 실행 -->
+    <!-- 회원 등록 폼 -->
     <form action="InsertProcess.jsp" method="post" name="InsertFrm" onsubmit="return validateForm(this);">
         아이디 : <input type="text" name="user_id" /><br />
         패스워드 : <input type="password" name="user_pw" /><br />
@@ -42,6 +46,7 @@
     <%
     } else { // 로그인된 상태
         %>
+    <!-- 로그인된 상태에서는 회원 등록 폼 대신 사용자 정보를 보여줌 -->
     <%=session.getAttribute("UserName")%>
     회원등록했습니다.
     <br />
