@@ -25,7 +25,7 @@
     Connection con = jdbc.con;
 
     try (PreparedStatement psmt = con.prepareStatement(sql)) {
-        // SQL 쿼리에 값을 설정
+        // SQL 쿼리에 값 설정
         psmt.setString(1, title);
         psmt.setString(2, content);
         psmt.setString(3, id);
