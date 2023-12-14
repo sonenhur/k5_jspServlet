@@ -6,3 +6,5 @@
 ##### num1 = Integer.parseInt(num1Str);: 문자열을 정수로 변환하여 변수에 저장.  
 ##### 최대공약수와 최소공배수 계산 후 결과값을 HTML 폼의 입력란에 출력.  
 ##### HTML 폼에서 사용자로부터 두 숫자를 입력받아 서버로 전송하고, 결과를 출력하는 간단한 웹 페이지 구성.
+
+Mission6에 관한 내용은 [Mission6 README](Mission6/README.md)에서 확인하세요.
