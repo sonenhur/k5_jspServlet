@@ -19,7 +19,7 @@
     String user_id = request.getParameter("user_id");
 	String visitcount = request.getParameter("visitcount");
     // SQL 쿼리 작성
-    String sql = "INSERT INTO board (title, content, user_id, visitcount) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO board (title, content, user_id) VALUES (?, ?, ?)";
 
     // 데이터베이스 연결을 위해 JDBConnect 클래스 사용
     Connection con = jdbc.con;
@@ -29,7 +29,6 @@
         psmt.setString(1, title);
         psmt.setString(2, content);
         psmt.setString(3, user_id);
-        psmt.setString(4, visitcount);
         
         // SQL 실행 및 결과 처리
         int inResult = psmt.executeUpdate();
