@@ -16,10 +16,10 @@
     // 사용자로부터 전달받은 정보 추출
     String title = request.getParameter("board_title");
     String content = request.getParameter("board_content");
-    String id = request.getParameter("user_id");
-
+    String user_id = request.getParameter("user_id");
+	String visitcount = request.getParameter("visitcount");
     // SQL 쿼리 작성
-    String sql = "INSERT INTO board (title, content, user_id) VALUES (?, ?, ?)";
+    String sql = "INSERT INTO board (title, content, user_id, visitcount) VALUES (?, ?, ?, ?)";
 
     // 데이터베이스 연결을 위해 JDBConnect 클래스 사용
     Connection con = jdbc.con;
@@ -28,8 +28,9 @@
         // SQL 쿼리에 값 설정
         psmt.setString(1, title);
         psmt.setString(2, content);
-        psmt.setString(3, id);
-
+        psmt.setString(3, user_id);
+        psmt.setString(4, visitcount);
+        
         // SQL 실행 및 결과 처리
         int inResult = psmt.executeUpdate();
         out.println(inResult + " 작성되었습니다.");
