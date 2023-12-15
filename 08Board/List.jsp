@@ -7,8 +7,11 @@
 	pageEncoding="UTF-8"%>
 
 <%
+// BoardDAO 객체 생성 및 필요한 매개변수 설정
 BoardDAO dao = new BoardDAO(application);
 Map<String, Object> param = new HashMap<String, Object>();
+
+// 검색 조건과 검색어를 파라미터에서 가져와 설정
 String searchField = request.getParameter("searchField");
 String searchWord = request.getParameter("searchWord");
 if (searchWord != null) {
@@ -16,7 +19,10 @@ if (searchWord != null) {
 	param.put("searchWord", searchWord);
 }
 
+// 총 게시물 수 조회
 int totalCount = dao.selectCount(param);
+
+// 게시물 목록 조회
 List<BoardDTO> boardLists = dao.selectList(param);
 dao.close();
 %>
@@ -51,6 +57,7 @@ dao.close();
 			<th width="15%">작성일</th>
 		</tr>
 <%
+// 게시물이 없는 경우 메시지 출력
 if (boardLists.isEmpty()){
 	%>
 	<tr>
@@ -62,6 +69,7 @@ if (boardLists.isEmpty()){
 	}
 	else {
 		int virtualNum=0;
+		// 게시물 목록 출력
 		for(BoardDTO dto : boardLists)
 		{
 			virtualNum = totalCount--;
@@ -71,6 +79,7 @@ if (boardLists.isEmpty()){
 	<tr align="center">
 	<td><%= virtualNum %></td>
 	<td align="left">
+	<!-- 게시물 제목에 링크 걸기 -->
 	<a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %>
 	</a>
 </td>
