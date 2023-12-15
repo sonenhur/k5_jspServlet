@@ -10,6 +10,7 @@
 <body>
   	<!-- 게시물 등록 폼 페이지 -->
 	<jsp:include page="../Common/Link.jsp" />
+  
     <h2>게시물 등록</h2>
     <%
     // 사용자가 로그인한 상태인지 확인
