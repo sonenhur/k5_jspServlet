@@ -1,4 +1,3 @@
-// 패키지 및 클래스 가져오기
 package model1.board;
 
 import java.sql.PreparedStatement;
@@ -138,7 +137,7 @@ public class BoardDAO extends JDBConnect {
         ResultSet rs = null;
 
         // 'member'와 'board' 테이블 조인하여 특정 게시물 세부 정보 검색하는 쿼리 준비하기
-        String query = "SELECT B.*, M.name FROM member M INNER JOIN board B ON M.id = B.id WHERE num=?";
+        String query = "SELECT B.*, M.name FROM member M INNER JOIN board B ON M.id = B.user_id WHERE num=?";
 
         try {
             // 쿼리 실행하고 결과 BoardDTO 객체로 채우기
@@ -152,7 +151,7 @@ public class BoardDAO extends JDBConnect {
                 dto.setContent(rs.getString("content"));
                 dto.setPostdate(rs.getDate("postdate"));
                 dto.setUser_id(rs.getString("user_id"));
-                dto.setVisitcount(rs.getString("6"));
+                dto.setVisitcount(rs.getString("visitcount"));
                 dto.setName(rs.getString("name"));
             }
         } catch (Exception e) {
@@ -193,5 +192,71 @@ public class BoardDAO extends JDBConnect {
                 e.printStackTrace();
             }
         }
+    }
+    
+    // 지정한 게시물 수정하기
+    public int updateEdit(BoardDTO dto) { 
+        int result = 0;
+        PreparedStatement psmt = null;
+        
+        try {
+            // 쿼리문 템플릿 
+            String query = "UPDATE board SET "
+                         + " title=?, content=? "
+                         + " WHERE num=?";
+            
+            // 쿼리문 완성
+            psmt = con.prepareStatement(query);
+            psmt.setString(1, dto.getTitle());
+            psmt.setString(2, dto.getContent());
+            psmt.setString(3, dto.getNum());
+            
+            // 쿼리문 실행 
+            result = psmt.executeUpdate();
+        } 
+        catch (Exception e) {
+            System.out.println("게시물 수정 중 예외 발생");
+            e.printStackTrace();
+        }finally {
+            // 리소스 닫기
+            try {
+                if (psmt != null)
+                    psmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result; // 결과 반환 
+    }
+    
+    // 지정한 게시물 삭제하기
+    public int deletePost(BoardDTO dto) { 
+        int result = 0;
+        PreparedStatement psmt = null;
+
+        try {
+            // 쿼리문 템플릿
+            String query = "DELETE FROM board WHERE num=?"; 
+
+            // 쿼리문 완성
+            psmt = con.prepareStatement(query); 
+            psmt.setString(1, dto.getNum()); 
+
+            // 쿼리문 실행
+            result = psmt.executeUpdate(); 
+        } 
+        catch (Exception e) {
+            System.out.println("게시물 삭제 중 예외 발생");
+            e.printStackTrace();
+        }finally {
+            // 리소스 닫기
+            try {
+                if (psmt != null)
+                    psmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return result; // 결과 반환 
     }
 }
