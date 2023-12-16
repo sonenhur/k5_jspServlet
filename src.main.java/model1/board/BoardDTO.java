@@ -1,7 +1,7 @@
 package model1.board;
 
 public class BoardDTO {
-
+	 // 멤버 변수 선언
 	private String num;
 	private String title;
 	private String content;
@@ -10,6 +10,7 @@ public class BoardDTO {
 	private String visitcount;
 	private String name;
 	
+	// 게터/세터
 	public String getNum() {
 		return num;
 	}
