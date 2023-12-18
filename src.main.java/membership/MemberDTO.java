@@ -35,5 +35,4 @@ public class MemberDTO {
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pass=" + pass + ", name=" + name + ", regidate=" + regidate + "]";
 	}
-	
 }
