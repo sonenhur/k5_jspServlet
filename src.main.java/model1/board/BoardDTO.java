@@ -5,7 +5,7 @@ public class BoardDTO {
 	private String num;
 	private String title;
 	private String content;
-	private String user_id;
+	private String id;
 	private java.sql.Date postdate;
 	private String visitcount;
 	private String name;
@@ -29,11 +29,11 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getUser_id() {
-		return user_id;
+	public String getId() {
+		return id;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public java.sql.Date getPostdate() {
 		return postdate;

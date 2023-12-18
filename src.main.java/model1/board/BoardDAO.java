@@ -78,7 +78,7 @@ public class BoardDAO extends JDBConnect {
                 dto.setTitle(rs.getString("title"));
                 dto.setContent(rs.getString("content"));
                 dto.setPostdate(rs.getDate("postdate"));
-                dto.setUser_id(rs.getString("user_id"));
+                dto.setId(rs.getString("id"));
                 dto.setVisitcount(rs.getString("visitcount"));
 
                 bbs.add(dto);
@@ -148,7 +148,7 @@ public class BoardDAO extends JDBConnect {
                 dto.setTitle(rs.getString("title"));
                 dto.setContent(rs.getString("content"));
                 dto.setPostdate(rs.getDate("postdate"));
-                dto.setUser_id(rs.getString("user_id"));
+                dto.setId(rs.getString("id"));
                 dto.setVisitcount(rs.getString("visitcount"));
 
                 // 반환할 결과 목록에 게시물 추가
@@ -180,11 +180,11 @@ public class BoardDAO extends JDBConnect {
 
         try {
             // 새 레코드 삽입하기 위한 쿼리 준비하고 실행하기
-            String query = "INSERT INTO board (title, content, user_id, visitcount) VALUES (?, ?, ?, 0)";
+            String query = "INSERT INTO board (title, content, id, visitcount) VALUES (?, ?, ?, 0)";
             psmt = con.prepareStatement(query);
             psmt.setString(1, dto.getTitle());
             psmt.setString(2, dto.getContent());
-            psmt.setString(3, dto.getUser_id());
+            psmt.setString(3, dto.getId());
 
             result = psmt.executeUpdate();
 
@@ -210,7 +210,7 @@ public class BoardDAO extends JDBConnect {
         ResultSet rs = null;
 
         // 'member'와 'board' 테이블 조인하여 특정 게시물 세부 정보 검색하는 쿼리 준비하기
-        String query = "SELECT B.*, M.name FROM member M INNER JOIN board B ON M.id = B.user_id WHERE num=?";
+        String query = "SELECT B.*, M.name FROM member M INNER JOIN board B ON M.id = B.id WHERE num=?";
 
         try {
             // 쿼리 실행하고 결과 BoardDTO 객체로 채우기
@@ -223,7 +223,7 @@ public class BoardDAO extends JDBConnect {
                 dto.setTitle(rs.getString(2));
                 dto.setContent(rs.getString("content"));
                 dto.setPostdate(rs.getDate("postdate"));
-                dto.setUser_id(rs.getString("user_id"));
+                dto.setId(rs.getString("id"));
                 dto.setVisitcount(rs.getString("visitcount"));
                 dto.setName(rs.getString("name"));
             }
