@@ -1,0 +1,4 @@
+MySQL에서 board의 'id'를 'user_id'로 바꿔놔서,
+JSP 코드에서도 getUser_id() 이런 식으로 돼있어요.
+컨트롤+F(Find/Replace)해서 User_id를 Id로 변경하면 될거에요.
+(첫글자 꼭 대문자로)
