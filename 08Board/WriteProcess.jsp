@@ -17,6 +17,11 @@ dto.setUser_id(session.getAttribute("UserId").toString());
 // DAO 객체를 생성하고 게시물 등록 수행
 BoardDAO dao = new BoardDAO(application);
 int iResult = dao.insertWrite(dto);
+// int iResult = 0;
+// for (int i = 1; i <= 100; i++) {
+// 	dto.setTitle(title + "-" + i);
+// 	iResult = dao.insertWrite(dto);
+// }
 dao.close();
 
 // 등록 결과에 따라 페이지 이동 또는 알림 처리
