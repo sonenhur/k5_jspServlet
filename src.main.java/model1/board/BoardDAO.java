@@ -106,28 +106,38 @@ public class BoardDAO extends JDBConnect {
         PreparedStatement psmt = null;
         ResultSet rs = null;
 
-        // 쿼리문 템플릿  
-        String query = " SELECT * FROM ( "
-                     + "    SELECT Tb.*, ROWNUM rNum FROM ( "
-                     + "        SELECT * FROM board ";
-
-        // 검색 조건 추가 
-        if (map.get("searchWord") != null) {
-            query += " WHERE " + map.get("searchField")
-                   + " LIKE '%" + map.get("searchWord") + "%' ";
-        }
-        
-        query += "      ORDER BY num DESC "
-               + "     ) Tb "
-               + " ) "
-               + " WHERE rNum BETWEEN ? AND ?"; 
+     // 쿼리문 템플릿
+//        String query = "SELECT * FROM ( "
+//                     + "    SELECT Tb.*, (@rownum := @rownum + 1) AS rNum "
+//                     + "    FROM ( "
+//                     + "        SELECT * FROM board ";
+//
+//        // 검색 조건 추가
+//        if (map.get("searchWord") != null) {
+//            query += " WHERE " + map.get("searchField")
+//                   + " LIKE '%" + map.get("searchWord") + "%' ";
+//        }
+//
+//        query += "      ORDER BY num DESC "
+//               + "    ) Tb, (SELECT @rownum := 0) AS dummy "
+//               + ") AS result "
+//               + "WHERE rNum BETWEEN ? AND ?";
+     // 쿼리문 템플릿
+        String query = "select * from board ";
+//      검색 조건 추가
+      if (map.get("searchWord") != null) {
+          query += " WHERE " + map.get("searchField")
+                 + " LIKE '%" + map.get("searchWord") + "%' ";
+      }
+      
+        		query += " order by num asc limit ?, ?";
 
         try {
             // 쿼리문 완성 
             psmt = con.prepareStatement(query);
-            psmt.setString(1, map.get("start").toString());
-            psmt.setString(2, map.get("end").toString());
-            
+            psmt.setInt(1, (Integer)map.get("start"));
+//            psmt.setString(2, map.get("end").toString());
+            psmt.setInt(2, (Integer)map.get("pagesize"));
             // 쿼리문 실행 
             rs = psmt.executeQuery();
             
@@ -138,7 +148,7 @@ public class BoardDAO extends JDBConnect {
                 dto.setTitle(rs.getString("title"));
                 dto.setContent(rs.getString("content"));
                 dto.setPostdate(rs.getDate("postdate"));
-                dto.setUser_id(rs.getString("id"));
+                dto.setUser_id(rs.getString("user_id"));
                 dto.setVisitcount(rs.getString("visitcount"));
 
                 // 반환할 결과 목록에 게시물 추가
