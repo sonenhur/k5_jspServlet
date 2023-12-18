@@ -64,7 +64,7 @@ function deletePost() {
 				<td colspan="4" align="center">
 					<%
 					// 현재 사용자가 작성자일 경우 수정 및 삭제 버튼 표시
-					if (session.getAttribute("UserId") != null && session.getAttribute("UserId").toString().equals(dto.getUser_id())) {
+					if (session.getAttribute("UserId") != null && session.getAttribute("UserId").toString().equals(dto.getId())) {
 					%>
 					<button type="button" onclick="location.href='Edit.jsp?num=<%=dto.getNum()%>';">
 						수정하기</button>

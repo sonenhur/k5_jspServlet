@@ -105,7 +105,7 @@ if (boardLists.isEmpty()){
 				<!-- 게시물 제목에 링크 걸기 --> <a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %>
 			</a>
 			</td>
-			<td align="center"><%= dto.getUser_id() %></td>
+			<td align="center"><%= dto.getId() %></td>
 			<td align="center"><%= dto.getVisitcount() %></td>
 			<td align="center"><%= dto.getPostdate() %></td>
 		</tr>
