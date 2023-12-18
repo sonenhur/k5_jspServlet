@@ -2,14 +2,10 @@ package common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import jakarta.servlet.ServletContext;
 //import java.sql.PreparedStatement;
 //import java.sql.ResultSet;
 //import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import jakarta.servlet.ServletContext;
 
 public class JDBConnect {
 	public Connection con;
