@@ -40,6 +40,10 @@
 	<%=session.getAttribute("UserName")%>
 	회원님 로그인하셨습니다.
 	<br />
+	<a href="../08Board/List.jsp">08페이지로</a>
+	<br />
+	<a href="../09PagingBoard/List.jsp">09페이지로</a>
+	<br />
 	<a href="Logout.jsp">[로그아웃]</a>
 	<%
 	}
