@@ -15,7 +15,7 @@ String sessionId = session.getAttribute("UserId").toString();
 
 int delResult = 0;
 
-if (sessionId.equals(dto.getUser_id())) {  // 작성자가 본인인지 확인 
+if (sessionId.equals(dto.getId())) {  // 작성자가 본인인지 확인 
     // 작성자가 본인이면...
     dto.setNum(num);
     delResult = dao.deletePost(dto);  // 삭제!!!

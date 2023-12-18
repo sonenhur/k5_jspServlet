@@ -83,7 +83,7 @@ if (boardLists.isEmpty()){
 	<a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %>
 	</a>
 </td>
-<td align="center"><%= dto.getUser_id() %></td>
+<td align="center"><%= dto.getId() %></td>
 <td align="center"><%= dto.getVisitcount() %></td>
 <td align="center"><%= dto.getPostdate() %></td>
 </tr>

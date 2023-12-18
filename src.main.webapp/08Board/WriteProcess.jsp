@@ -12,7 +12,7 @@ String content = request.getParameter("content");
 BoardDTO dto = new BoardDTO();
 dto.setTitle(title);
 dto.setContent(content);
-dto.setUser_id(session.getAttribute("UserId").toString());
+dto.setId(session.getAttribute("UserId").toString());
 
 // DAO 객체를 생성하고 게시물 등록 수행
 BoardDAO dao = new BoardDAO(application);
