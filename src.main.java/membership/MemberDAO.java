@@ -3,6 +3,7 @@ package membership;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import common.JDBConnect;
+import jakarta.servlet.ServletContext;
 
 public class MemberDAO extends JDBConnect {
 	
@@ -10,9 +11,14 @@ public class MemberDAO extends JDBConnect {
 	public MemberDAO(String drv, String url, String id, String pw) {
 		super(drv, url, id, pw);
 	}
+	
+	public MemberDAO(ServletContext application) {
+		super(application);
+	}
+	
 	//명시한 아이디/패스워드와 일치하는 회원 정보를 반환합니다
 	public MemberDTO getMemberDTO(String uid, String upass) {
-		MemberDTO dto = new MemberDTO(); // 회원 정보 DTO 객체 생성
+		MemberDTO dto = null; // 회원 정보 DTO 객체 생성
 		String query = "SELECT * FROM member WHERE id=? AND pass=?"; // 쿼리문 실행
 
 		PreparedStatement psmt = null;
@@ -26,6 +32,7 @@ public class MemberDAO extends JDBConnect {
 			rs = psmt.executeQuery(); // 쿼리문 실행
 
 			if (rs.next()) {
+				dto = new MemberDTO();
 				// 쿼리 결과로 얻은 회원 정보를 DTO 객체에 저장
 				dto.setId(rs.getString("id"));
 				dto.setPass(rs.getString("pass"));
