@@ -123,14 +123,14 @@ public class BoardDAO extends JDBConnect {
 //               + ") AS result "
 //               + "WHERE rNum BETWEEN ? AND ?";
      // 쿼리문 템플릿
-        String query = "select * from board ";
+        String query = "SELECT * FROM board ";
 //      검색 조건 추가
       if (map.get("searchWord") != null) {
           query += " WHERE " + map.get("searchField")
                  + " LIKE '%" + map.get("searchWord") + "%' ";
       }
       
-        		query += " order by num asc limit ?, ?";
+        		query += " ORDER BY num DESC LIMIT ?, ?";
 
         try {
             // 쿼리문 완성 
