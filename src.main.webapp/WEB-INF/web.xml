@@ -29,11 +29,27 @@
 		<param-value>tiger</param-value>
 	</context-param>
 	<context-param>
-	<param-name>POSTS_PER_PAGE</param-name>
-	<param-value>10</param-value>
+		<param-name>POSTS_PER_PAGE</param-name>
+		<param-value>10</param-value>
 	</context-param>
 	<context-param>
-	<param-name>PAGES_PER_BLOCK</param-name>
-	<param-value>5</param-value>
+		<param-name>PAGES_PER_BLOCK</param-name>
+		<param-value>5</param-value>
 	</context-param>
+	<servlet>
+		<servlet-name>HelloServlet</servlet-name>
+		<servlet-class>servlet.HelloServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/12Servlet/HelloServlet.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>DirectServletPrint</servlet-name>
+		<servlet-class>servlet.DirectServletPrint</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>DirectServletPrint</servlet-name>
+	<url-pattern>/12Servlet/DirectServletPrint.do</url-pattern>
+	</servlet-mapping>
 </web-app>
