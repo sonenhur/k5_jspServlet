@@ -1,4 +1,4 @@
-*****
+
 **Mission6**
 ---
 ### **InsertForm.jsp :**
@@ -20,7 +20,6 @@
  - 회원 등록에 실패한 경우 표시되는 페이지.  
  - InsertForm.jsp" 링크를 통해 회원 등록 폼으로 돌아갈 수 있음.  
 
-*****
 **Mission7**
 ---
 ### **InsertBoardForm.jsp :**
